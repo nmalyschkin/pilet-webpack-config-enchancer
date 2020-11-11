@@ -1,7 +1,7 @@
-import { Plugin, Compiler, BannerPlugin, DefinePlugin } from "webpack";
+import { BannerPlugin, DefinePlugin } from "webpack";
 import { setEnvironment, getDefineVariables, getVariables } from "./helpers";
 
-export interface PiletWebpackPluginOptions {
+export interface PiletWebpackConfigEnchancerOptions {
     /**
      * The name of the pilet.
      */
@@ -46,7 +46,7 @@ function getExternals(piral: string) {
     ];
 }
 
-export const piletWebpackConfigEnchancer = (options: PiletWebpackPluginOptions) => (compilerOptions) => {
+export const piletWebpackConfigEnchancer = (options: PiletWebpackConfigEnchancerOptions) => (compilerOptions) => {
     const environment = process.env.NODE_ENV || "development";
     const { name, version, piral, externals = getExternals(piral), schema } = options;
     const shortName = name.replace(/\W/gi, "");
