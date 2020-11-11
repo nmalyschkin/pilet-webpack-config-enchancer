@@ -9,16 +9,16 @@
 [![chat][chat]][chat-url]
 [![size][size]][size-url]
 
-# pilet-webpack-plugin
+# pilet-webpack-config-enchancer
 
-The `pilet-webpack-plugin` helps you to build pilets using Webpack.
+The `pilet-webpack-config-enchancer` helps you to build pilets using Webpack.
 
 ## Getting Started
 
-To begin, you'll need to install `pilet-webpack-plugin`:
+To begin, you'll need to install `pilet-webpack-config-enchancer`:
 
 ```sh
-npm install pilet-webpack-plugin --save-dev
+npm install pilet-webpack-config-enchancer --save-dev
 ```
 
 Then add the plugin to your `webpack` config. For example:
@@ -26,18 +26,18 @@ Then add the plugin to your `webpack` config. For example:
 **webpack.config.js**
 
 ```js
-const { PiletWebpackPlugin } = require('pilet-webpack-plugin');
-const piletPkg = require('./package.json');
+const { piletWebpackConfigEnchancer } = require("pilet-webpack-config-enchancer");
+const piletPkg = require("./package.json");
 
-module.exports = {
-  plugins: [
-    new PiletWebpackPlugin({
-      name: piletPkg.name,
-      version: piletPkg.version,
-      piral: piletPkg.piral.name,
-    }),
-  ],
-};
+const enchance = piletWebpackConfigEnchancer({
+    name: piletPkg.name,
+    version: piletPkg.version,
+    piral: piletPkg.piral.name,
+});
+
+module.exports = enchance({
+    /* your webpack config here*/
+});
 ```
 
 And run `webpack` via your preferred method.
@@ -51,21 +51,21 @@ Allows supplying additional variables to be used as definitions. Similar to the 
 Example:
 
 ```js
-const { PiletWebpackPlugin } = require('pilet-webpack-plugin');
-const piletPkg = require('./package.json');
+const { piletWebpackConfigEnchancer } = require("pilet-webpack-config-enchancer");
+const piletPkg = require("./package.json");
 
-module.exports = {
-  plugins: [
-    new PiletWebpackPlugin({
-      name: piletPkg.name,
-      version: piletPkg.version,
-      piral: piletPkg.piral.name,
-      variables: {
-        PIRAL_CLI_VERSION: require('piral-cli/package.json').version,
-      },
-    }),
-  ],
-};
+const enchance = piletWebpackConfigEnchancer({
+    name: piletPkg.name,
+    version: piletPkg.version,
+    piral: piletPkg.piral.name,
+    variables: {
+        PIRAL_CLI_VERSION: require("piral-cli/package.json").version,
+    },
+});
+
+module.exports = enchance({
+    /* your webpack config here*/
+});
 ```
 
 ## Contributing

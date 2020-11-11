@@ -1,7 +1,7 @@
 {
-  "name": "pilet-webpack-plugin",
-  "version": "0.6.4",
-  "description": "Webpack plugin for generating a valid pilet bundle.",
+  "name": "pilet-webpack-config-enchancer",
+  "version": "0.1.0",
+  "description": "Webpack config enchancer for generating a valid pilet bundle.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -29,7 +29,6 @@
   },
   "homepage": "https://github.com/FlorianRappl/piral-webpack-tools#readme",
   "devDependencies": {
-    "webpack": "4.42.0"
-  },
-  "dependencies": {}
+    "webpack": "^5.4.0"
+  }
 }
